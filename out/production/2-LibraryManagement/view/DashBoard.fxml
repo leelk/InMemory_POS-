@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dashBoardRoot" prefHeight="386.0" prefWidth="695.0" style="-fx-background-color: #636e72;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
+   <children>
+      <ImageView fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="120.0" onMouseClicked="#btnManageMember" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aset/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="142.0" fitWidth="134.0" layoutX="185.0" layoutY="122.0" onMouseClicked="#btnManageBook" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aset/reading.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="134.0" fitWidth="141.0" layoutX="359.0" layoutY="122.0" onMouseClicked="#btnIssueBook" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aset/library.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="134.0" fitWidth="145.0" layoutX="530.0" layoutY="129.0" onMouseClicked="#btnIssued" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../aset/search.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="143.0" layoutY="14.0" text="Library Management System " textFill="#d6e9ff">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="262.0" text="Manage Member" textFill="WHITE" />
+      <Label layoutX="197.0" layoutY="262.0" text="Manage Books" textFill="WHITE" />
+      <Label layoutX="357.0" layoutY="262.0" text="Manage Issue Books" textFill="WHITE" />
+      <Label layoutX="543.0" layoutY="263.0" text="Manage Returns" textFill="WHITE" />
+      <AnchorPane layoutY="356.0" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: #ff7675;" />
+      <AnchorPane layoutX="56.0" layoutY="333.0" prefHeight="54.0" prefWidth="57.0" style="-fx-background-color: #ff1675;" />
+      <AnchorPane layoutX="638.0" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: #ff7675;" />
+      <AnchorPane layoutX="581.0" prefHeight="54.0" prefWidth="57.0" style="-fx-background-color: #ff1675;" />
+   </children>
+</AnchorPane>
