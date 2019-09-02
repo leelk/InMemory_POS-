@@ -19,7 +19,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.BookTM;
-import util.MemberTM;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,14 +44,12 @@ public class ManageBookController {
         btnDeleteID.setDisable(true);
         btnAddID.setDisable(true);
 
-
         tblBook.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("bookID"));
         tblBook.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("title"));
         tblBook.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("author"));
         tblBook.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("status"));
 
         ObservableList<BookTM> books = FXCollections.observableList(DB.booksDB);
-
         tblBook.setItems(books);
 
 
@@ -62,17 +59,14 @@ public class ManageBookController {
 
                 BookTM selectedItem = tblBook.getSelectionModel().getSelectedItem();
 
-
-
-                txtAuthor.setDisable(false);
-                txtTitle.setDisable(false);
-                txtBookID.setDisable(false);
-
                 if (selectedItem == null) {
                     btnAddID.setText("Add");
                     btnDeleteID.setDisable(true);
                     return;
                 }
+                txtAuthor.setDisable(false);
+                txtTitle.setDisable(false);
+                txtBookID.setDisable(false);
                 btnAddID.setText("Update");
                 btnAddID.setDisable(false);
                 btnDeleteID.setDisable(false);
@@ -81,13 +75,6 @@ public class ManageBookController {
                 txtBookID.setText(selectedItem.getBookID());
             }
         });
-
-
-
-
-
-
-
     }
 
 
@@ -96,9 +83,7 @@ public class ManageBookController {
         btnDeleteID.setDisable(true);
         txtTitle.setDisable(false);
         txtAuthor.setDisable(false);
-
         btnAddID.setDisable(false);
-//        tblBook.clear();
         txtTitle.clear();
         txtAuthor.clear();
         txtTitle.requestFocus();
@@ -120,44 +105,26 @@ public class ManageBookController {
             nextID = "B0" + maxid;
         } else {
             nextID = "B" + maxid;
-
         }
-
         txtBookID.setText(nextID);
-
     }
 
     public void btnAdd(ActionEvent actionEvent) {
         if (txtTitle.getText().equalsIgnoreCase("") || txtAuthor.getText().equalsIgnoreCase("")) {
             new Alert(Alert.AlertType.ERROR, "Book Title or Autor Name can not be empty ! ", ButtonType.OK).show();
         } else {
-
             if (btnAddID.getText().equalsIgnoreCase("Add")) {
-
-
                 ObservableList<BookTM> book = tblBook.getItems();
-                book.add(new BookTM(txtBookID.getText(), txtTitle.getText(), txtAuthor.getText(),true));
+                book.add(new BookTM(txtBookID.getText(), txtTitle.getText(), txtAuthor.getText(), true));
                 btnNewBook(actionEvent);
             } else {
                 BookTM selectedItem = tblBook.getSelectionModel().getSelectedItem();
-
-
-//                System.out.println(selectedItem.getAuthor()+" "+ selectedItem.getBookID()+" "+selectedItem.getTitle());
-
                 selectedItem.setTitle(txtTitle.getText());
                 selectedItem.setAuthor(txtAuthor.getText());
-//                selectedItem.setMemberPhoneNumber(txtPhoeNumber.getText());
-
                 tblBook.refresh();
             }
         }
     }
-
-
-
-
-
-
 
     public void btnDelete(ActionEvent actionEvent) {
 
@@ -170,12 +137,9 @@ public class ManageBookController {
             BookTM selectedItem = tblBook.getSelectionModel().getSelectedItem();
             tblBook.getItems().remove(selectedItem);
         }
-
-
     }
 
     public void btnHome(MouseEvent mouseEvent) throws IOException {
-
 
         URL resource = this.getClass().getResource("/view/DashBoard.fxml");
         Parent root = FXMLLoader.load(resource);

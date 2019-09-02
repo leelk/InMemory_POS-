@@ -11,7 +11,6 @@ public class BookTM {
         this.title = title;
         this.author = author;
         this.status = status;
-
     }
 
     @Override
