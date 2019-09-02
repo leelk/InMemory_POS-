@@ -34,7 +34,6 @@ public class ManageMemberController {
     public JFXButton btnAddID;
     public JFXButton btnDeleteID;
 
-
     public void initialize() {
 
         txtAddress.setDisable(true);
@@ -44,15 +43,12 @@ public class ManageMemberController {
         btnAddID.setDisable(true);
         btnDeleteID.setDisable(true);
 
-
         tblMember.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("memberID"));
         tblMember.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("memberName"));
         tblMember.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("memberAddress"));
         tblMember.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("memberPhoneNumber"));
 
-
         ObservableList<MemberTM> members = FXCollections.observableList(DB.membersDB);
-
         tblMember.setItems(members);
 
 
@@ -79,11 +75,8 @@ public class ManageMemberController {
                 txtAddress.setText(selectedItem.getMemberAddress());
                 txtMemeberID.setText(selectedItem.getMemberID());
                 txtPhoeNumber.setText(selectedItem.getMemberPhoneNumber());
-
-
             }
         });
-
     }
 
     public void btnHome(MouseEvent mouseEvent) throws IOException {
@@ -128,12 +121,8 @@ public class ManageMemberController {
             nextID = "M0" + maxid;
         } else {
             nextID = "M" + maxid;
-
         }
-
         txtMemeberID.setText(nextID);
-
-
     }
 
     public void btnAdd(ActionEvent actionEvent) {
@@ -141,17 +130,14 @@ public class ManageMemberController {
         if (txtName.getText().equalsIgnoreCase("") || txtAddress.getText().equalsIgnoreCase("")) {
             new Alert(Alert.AlertType.ERROR, "Name or Address can not be empty ! ", ButtonType.OK).show();
         } else {
-
             String memberid = txtMemeberID.getText();
             String name = txtName.getText();
             String address = txtAddress.getText();
             String phone = txtPhoeNumber.getText();
 
-            if (name.matches("[A-Z a-z]{3,}")){
-                if (address.matches("\\d{3}[A-Za-z][,]\\s[A-Za-z]{3,5}[,]\\s[A-Za-z]{3,10}")){
-                    if (phone.matches("\\d{10}")){
-
-
+            if (name.matches("[A-Z a-z]{3,}")) {
+                if (address.matches("\\d{3}[A-Za-z][,]\\s[A-Za-z]{3,5}[,]\\s[A-Za-z]{3,10}")) {
+                    if (phone.matches("\\d{10}")) {
                         if (btnAddID.getText().equalsIgnoreCase("add")) {
 
                             ObservableList<MemberTM> customer = tblMember.getItems();
@@ -162,70 +148,22 @@ public class ManageMemberController {
                             selectedItem.setMemberAddress(txtAddress.getText());
                             selectedItem.setMemberName(txtName.getText());
                             selectedItem.setMemberPhoneNumber(txtPhoeNumber.getText());
-
                             tblMember.refresh();
                         }
-
-                    }else {
+                    } else {
                         System.out.println("Phone Number is not in correct format");
                         txtPhoeNumber.requestFocus();
                     }
-
-                }else {
+                } else {
                     System.out.println("Address is not in correct Format");
                     txtAddress.requestFocus();
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-            }else {
+            } else {
                 System.out.println("Name is not in correct format.");
                 txtName.requestFocus();
-
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
-
 
     public void btnDelete(ActionEvent actionEvent) {
 
