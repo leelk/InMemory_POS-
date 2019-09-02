@@ -130,7 +130,6 @@ public class ManageMemberController {
         if (txtName.getText().equalsIgnoreCase("") || txtAddress.getText().equalsIgnoreCase("")) {
             new Alert(Alert.AlertType.ERROR, "Name or Address can not be empty ! ", ButtonType.OK).show();
         } else {
-            String memberid = txtMemeberID.getText();
             String name = txtName.getText();
             String address = txtAddress.getText();
             String phone = txtPhoeNumber.getText();
@@ -139,7 +138,6 @@ public class ManageMemberController {
                 if (address.matches("\\d{3}[A-Za-z][,]\\s[A-Za-z]{3,5}[,]\\s[A-Za-z]{3,10}")) {
                     if (phone.matches("\\d{10}")) {
                         if (btnAddID.getText().equalsIgnoreCase("add")) {
-
                             ObservableList<MemberTM> customer = tblMember.getItems();
                             customer.add(new MemberTM(txtMemeberID.getText(), txtName.getText(), txtAddress.getText(), txtPhoeNumber.getText()));
                             btnNewMember(actionEvent);
