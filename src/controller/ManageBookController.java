@@ -113,15 +113,29 @@ public class ManageBookController {
         if (txtTitle.getText().equalsIgnoreCase("") || txtAuthor.getText().equalsIgnoreCase("")) {
             new Alert(Alert.AlertType.ERROR, "Book Title or Autor Name can not be empty ! ", ButtonType.OK).show();
         } else {
-            if (btnAddID.getText().equalsIgnoreCase("Add")) {
-                ObservableList<BookTM> book = tblBook.getItems();
-                book.add(new BookTM(txtBookID.getText(), txtTitle.getText(), txtAuthor.getText(), true));
-                btnNewBook(actionEvent);
-            } else {
-                BookTM selectedItem = tblBook.getSelectionModel().getSelectedItem();
-                selectedItem.setTitle(txtTitle.getText());
-                selectedItem.setAuthor(txtAuthor.getText());
-                tblBook.refresh();
+            String title = txtTitle.getText();
+            String author = txtAuthor.getText();
+
+            if(title.matches("[A-Za-z0-9]{3,}")){
+                if (author.matches("[A-Za-z]{3,}")){
+                    if (btnAddID.getText().equalsIgnoreCase("Add")) {
+                        ObservableList<BookTM> book = tblBook.getItems();
+                        book.add(new BookTM(txtBookID.getText(), txtTitle.getText(), txtAuthor.getText(), true));
+                        btnNewBook(actionEvent);
+                    } else {
+                        BookTM selectedItem = tblBook.getSelectionModel().getSelectedItem();
+                        selectedItem.setTitle(txtTitle.getText());
+                        selectedItem.setAuthor(txtAuthor.getText());
+                        tblBook.refresh();
+                    }
+
+                }else {
+                    System.out.println("Name can not contains numbers and symbols");
+                    txtAuthor.requestFocus();
+                }
+            }else {
+                System.out.println("please re enter Title correctly. ");
+                txtTitle.requestFocus();
             }
         }
     }
