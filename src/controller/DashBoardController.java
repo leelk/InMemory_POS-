@@ -20,8 +20,6 @@ public class DashBoardController {
         Stage primaryStage = (Stage)this.dashBoardRoot.getScene().getWindow();
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
     public void btnManageBook(MouseEvent mouseEvent) throws IOException {
@@ -31,8 +29,6 @@ public class DashBoardController {
         Stage primaryStage = (Stage)this.dashBoardRoot.getScene().getWindow();
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
     public void btnIssueBook(MouseEvent mouseEvent) throws IOException {
@@ -43,7 +39,6 @@ public class DashBoardController {
         Stage primaryStage = (Stage)this.dashBoardRoot.getScene().getWindow();
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     public void btnIssued(MouseEvent mouseEvent) throws IOException {
@@ -53,6 +48,5 @@ public class DashBoardController {
         Stage primaryStage = (Stage)this.dashBoardRoot.getScene().getWindow();
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 }

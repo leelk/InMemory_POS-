@@ -37,26 +37,21 @@ public class IssueHanddleController {
 
     ObservableList<SearchTM> list = FXCollections.observableArrayList();
 
-
     public void initialize() {
 
         ObservableList<SearchTM> tempSearch = tblIssuedDetails.getItems();
-
         System.out.println(DB.isseBookDB);
-
         tblIssuedDetails.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("issuedId"));
         tblIssuedDetails.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("memberId"));
         tblIssuedDetails.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("memberName"));
         tblIssuedDetails.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("issuedDate"));
 
         for (IssueBookTM issueBook : DB.isseBookDB) {
-
             String memberName = null;
             for (MemberTM member : DB.membersDB) {
                 if (issueBook.getMemberID().equals(member.getMemberID())) {
                     memberName = member.getMemberName();
                 }
-
             }
 
             list.add(new SearchTM(
@@ -67,8 +62,6 @@ public class IssueHanddleController {
             ));
         }
         tblIssuedDetails.setItems(list);
-
-
         ObservableList items = cmbIssuedID.getItems();
         for (IssueBookTM issueBook : DB.isseBookDB) {
             items.add(issueBook.getIssueID());
@@ -79,7 +72,6 @@ public class IssueHanddleController {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 String selectedItem = cmbIssuedID.getSelectionModel().getSelectedItem();
                 for (IssueBookTM issueBook : DB.isseBookDB) {
-
                     String memeberName = null;
                     for (MemberTM member : DB.membersDB) {
                         if (issueBook.getMemberID().equals(member.getMemberID())) {
@@ -87,34 +79,19 @@ public class IssueHanddleController {
                             break;
                         }
                     }
-
                     if (issueBook.getIssueID().equals(selectedItem)) {
                         txtIssuedDate.setText(issueBook.getIssueDate());
                         txtMemberName.setText(memeberName);
                     }
-
                 }
             }
         });
-
-
-//        txtSeach.getSelectedText().
-
-//        txtSeach.textProperty().addListener((observable, oldValue, newValue) -> {
-//            ObservableList tempIssuedDB = FXCollections.observableArrayList(DB.SearchTM);
-//            for (SearchTM  x: tempIssuedDB) {
-//
-//            }
-//
-//        });
     }
 
 
     public void btnCalculateFee(ActionEvent actionEvent) {
-        //set buttonDone disable false
 
         SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yy");
-
         String issueDate = txtIssuedDate.getText();
         String currentDate = txtCurrentDate.getText();
 
@@ -126,18 +103,14 @@ public class IssueHanddleController {
             long difference = dateAfter.getTime() - dateBefore.getTime();
             float daysBetween = (difference / (1000 * 60 * 60 * 24));
             System.out.println("Dates between" + daysBetween);
-
             if (daysBetween > validDate) {
                 int extentndceDays = (int) daysBetween - validDate;
                 fee = extentndceDays * 15;
             }
             txtFee.setText(fee + "");
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void btnDone(ActionEvent actionEvent) {
@@ -150,7 +123,6 @@ public class IssueHanddleController {
                         }
                     }
                 }
-
             }
         }
     }
@@ -169,7 +141,6 @@ public class IssueHanddleController {
 
         list.clear();
         String name = txtSeach.getText();
-
         for (IssueBookTM searchItem : DB.isseBookDB) {
             for (MemberTM member : DB.membersDB) {
                 if (searchItem.getMemberID().equals(member.getMemberID())) {

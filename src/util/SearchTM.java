@@ -12,10 +12,8 @@ public class SearchTM {
         this.memberName = memberName;
         this.issuedDate = issuedDate;
     }
-
     public SearchTM() {
     }
-
     public String getIssuedId() {
         return issuedId;
     }
